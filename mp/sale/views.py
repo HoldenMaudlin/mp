@@ -27,6 +27,6 @@ def sales(request, Sale_id):
     except Sale.DoesNotExist:
         raise Http404("Listing does not exist.")
     context = {
-        'sale': req_sale,
+        'sale': req_sale, 
     }
     return render(request, 'sale/sale.html', context)
