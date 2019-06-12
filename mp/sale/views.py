@@ -5,7 +5,7 @@ from .models import Sale
 from django.db.models import Q
 
 # Create your views here.
-
+ 
 
 def index(request):
     all_for_sales = Sale.objects.all()
