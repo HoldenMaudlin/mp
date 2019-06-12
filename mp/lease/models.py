@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 
-class Sale(models.Model):
+class Lease(models.Model):
     # Locations
     address = models.CharField(max_length=200)
     city = models.CharField(max_length=50, default='Culver City')

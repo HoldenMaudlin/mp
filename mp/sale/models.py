@@ -15,7 +15,8 @@ class Sale(models.Model):
     featured = models.BooleanField(default=False)
     lot_size = models.IntegerField(default=0, blank=True)
     building_size = models.IntegerField(default=0)
-    completed = models.BooleanField()
+    completed = models.BooleanField(default=False)
+    in_escrow = models.BooleanField(default=False)
     # Additional info
     description = models.CharField(max_length=400)
     main_image = models.ImageField(upload_to='images')

@@ -21,5 +21,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('sale/', include('sale.urls')),
+    path('lease/', include('lease.urls')),
     path('', include('home.urls'))
 ]
