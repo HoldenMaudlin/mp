@@ -27,14 +27,99 @@
     </div>
     <!--end of Navigation bar-->
 
-    <!-- /.container -->
+    <!-- container -->
+    <div class="container">
+        <!-- Current Listing Block -->
+        {% if current_properties|length > 0 %}
+            <h2>For {{page}}</h2>
+            <hr>
+            <div class="row">
+                {% for prop in current_properties %}
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">{{prop.address}}</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                    </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- ./Current Listing Block -->
 
+        <!-- Escrow Block -->
+        {% if sale and escrow_properties|length > 0%}
+            <h2>In Escrow</h2>
+            <hr>
+            <div class="row">
+                {% for prop in escrow_properties %}
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">{{prop.address}}</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                    </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- ./Escrow Block -->
+
+        <!-- Recent Listing Block -->
+        {% if recent_properties|length > 0 %}
+            {% if sale %}
+                <h2>Recently Sold</h2>
+            {% else %}
+                <h2>Recently Leased</h2>
+            {% endif %}
+            <hr>
+            <div class="row">
+                {% for prop in current_properties %}
+                <div class="col-md-4 mb-5">
+                    <div class="card h-100">
+                    <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+                    <div class="card-body">
+                        <h4 class="card-title">{{prop.address}}</h4>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                    </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:3 %}
+            </div>
+            <div class="row">
+                {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <!-- ./ Recent Listing Block -->
+    </div>
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="py-4 bg-dark">
         <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Maud Properties 2019</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Maud Properties 2019</p>
         </div>
         <!-- /.container -->
     </footer>
