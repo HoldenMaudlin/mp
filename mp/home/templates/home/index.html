@@ -16,7 +16,8 @@
   <!-- Custom styles for this template -->
   {% load static %}
   <link href="{% static "home/main.css"%}" rel="stylesheet">
-
+  <!-- Load Humanize -->
+  {% load humanize %}
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
@@ -42,7 +43,40 @@
 
   <!-- Page Content -->
   <div class="container">
-
+    <!-- Featured Property Block -->
+    {% if featured_properties|length > 0 %}
+      <h2>{{title}}</h2>
+      <hr>
+      <div class="row">
+        {% for prop in featured_properties %}
+        <div class="col-md-4 mb-5">
+          <div class="card h-100">
+          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
+          <div class="card-body">
+            <h4 class="card-title">{{prop.address}}</h4>
+            <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
+            <span class="card-text">Listing Price</span> 
+            <span class="card-text" style="float: right">${{prop.price|intcomma}} {% if not sale %}/month/{{prop.lease_type}}{% endif %}</span> 
+            <br>
+            <span class="card-text">Building Size</span> 
+            <span class="card-text" style="float: right">{{prop.building_size|intcomma}}</span> 
+            <br>
+            <span class="card-text">Lot Size</span>                        
+            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}}</span> 
+          </div>
+          <div class="card-footer">
+            <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+          </div>
+          </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+      </div>
+      <div class="row">
+        {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    <!-- ./Featured Property Block -->
     <div class="row">
       <div class="col-md-8 mb-5">
         <h2>Story</h2>
@@ -73,59 +107,13 @@
       </div>
     </div>
     <!-- /.row -->
-
-    <h2>Featured Properties</h2>
-    <hr>
-    <div class="row">
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-4 mb-5">
-        <div class="card h-100">
-          <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- /.row -->
-
   </div>
   <!-- /.container -->
 
   <!-- Footer -->
-  <footer class="py-5 bg-dark">
-    <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Maud Properties 2019</p>
-    </div>
-    <!-- /.container -->
-  </footer>
+  <div id="nav-placeholder">
+    {% include "home/foot.html" %}
+  </div>
 
   <!-- Bootstrap core JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

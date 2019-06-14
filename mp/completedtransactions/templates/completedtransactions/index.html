@@ -28,18 +28,32 @@
     </div>
     <!--end of Navigation bar-->
 
+
+
     <!-- container -->
     <div class="container">
+        <!-- title -->
+        <h2 style="margin: 0px">{{title}} Properties</h2>
+        <h4 style="margin: 0px; color: grey">Showing 192</h4 >
+        <hr>
+        <!-- ./title -->
+        {% for prop in transactions %}
+        <div class="row">
+            <div class="col-sm">
+                {{prop.address}}
+            </div>
+            {% if forloop.counter|divisibleby:3%}
+            </div>
+            <div class="row">
+            {% endif %}
+            {% endfor %}
+        </div>
     </div>
     <!-- /.container -->
 
-    <!-- Footer -->
-    <footer class="py-4 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Maud Properties 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+    <div id="nav-placeholder">
+        {% include "home/foot.html" %}
+    </div>
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

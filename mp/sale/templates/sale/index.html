@@ -16,7 +16,7 @@
     <!-- Custom styles for this template -->
     {% load static %}
     <link href="{% static "home/main.css"%}" rel="stylesheet">
-    
+    {% load humanize %}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
@@ -41,7 +41,15 @@
                     <img class="card-img-top" src="http://placehold.it/300x200" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
+                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
+                        <span class="card-text">Listing Price:</span> 
+                        <span class="card-text" style="float: right">${{prop.price|intcomma}} {% if not sale %}/month/{{prop.lease_type}}{% endif %}</span> 
+                        <br>
+                        <span class="card-text">Building Size:</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}}</span> 
+                        <br>
+                        <span class="card-text">Lot Size:</span>                        
+                        <span class="card-text" style="float: right">{{prop.lot_size|intcomma}}</span> 
                     </div>
                     <div class="card-footer">
                         <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
@@ -118,12 +126,10 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-4 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Maud Properties 2019</p>
-        </div>
-        <!-- /.container -->
-    </footer>
+    <div id="nav-placeholder">
+        {% include "home/foot.html" %}
+    </div>
+    <!-- ./Footer -->
 
     <!-- Bootstrap core JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
