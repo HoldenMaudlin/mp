@@ -1,9 +1,5 @@
 env/*
 .DS_Store
 *.pyc
-mp/images/*
-mp/fliers/*
-# Elastic Beanstalk Files
-.elasticbeanstalk/*
-!.elasticbeanstalk/*.cfg.yml
-!.elasticbeanstalk/*.global.yml
+images/*
+fliers/*
