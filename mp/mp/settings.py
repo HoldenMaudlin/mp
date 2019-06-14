@@ -25,7 +25,7 @@ SECRET_KEY = '94)5^d1md+x!sjkjmu7ozf_4x^ohg-lli79e1&weom3p#k+j3o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://maudpropweb-dev.us-west-2.elasticbeanstalk.com/']
 
 
 # Application definition
