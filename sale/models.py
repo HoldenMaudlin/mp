@@ -28,6 +28,9 @@ class Sale(Listing):
     in_escrow = models.BooleanField(default=False)
     featured = models.BooleanField(default=False)
 
+    def priceAddOn(self):
+        return ""
+
 class SaleImage(models.Model):
     property = models.ForeignKey(Sale, on_delete=models.PROTECT, related_name='images')
     image = models.ImageField()

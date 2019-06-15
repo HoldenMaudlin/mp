@@ -21,7 +21,7 @@ def index(request):
 
 def leases(request, Lease_id):
     try:
-        req_sale = Lease.obects.get(pk=Lease_id)
+        req_sale = Lease.objects.get(pk=Lease_id)
     except Lease.DoesNotExist:
         raise Http404("Lease listing does not exist.")
     context = {

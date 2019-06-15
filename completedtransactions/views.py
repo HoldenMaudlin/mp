@@ -15,6 +15,7 @@ def sold(request):
         transactions.append({'address': sale.address, 'id': sale.id})
     context = {
         'title': 'Sold',
+        'subtitle': 'Sales',
         'transactions': transactions,
     }
     return render(request, template, context)
@@ -30,7 +31,8 @@ def leased(request):
         transactions.append({'address': lease.address, 'id': lease.id})
     context = {
         'title': 'Leased',
-        'transactions': leases
+        'subtitle': 'Leases',
+        'transactions': transactions
     }
     return render(request, template, context)
 

@@ -6,3 +6,6 @@ from django.core.exceptions import ValidationError
 
 class Lease(Listing):
     lease_type = models.CharField(max_length=10, choices=[('NNN', 'NNN'), ('MG', 'MG')])
+
+    def priceAddOn(self):
+        return " p. month/" + self.lease_type
