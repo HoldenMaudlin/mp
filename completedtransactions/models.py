@@ -9,5 +9,5 @@ class CompletedTransactions(models.Model):
     longitude = models.DecimalField(max_digits=10, decimal_places=7, default=0)
     latitude = models.DecimalField(max_digits=10, decimal_places=7, default=0)
     transaction = models.CharField(max_length=20, choices=[('Leased', 'Leased'), ('Sold', 'Sold')])
-    transaction_type = models.CharField(max_length=30, default="Owner/User")
+    property_type = models.CharField(max_length=30, default="Owner/User")
 

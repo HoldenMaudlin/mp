@@ -15,9 +15,10 @@ class Listing(models.Model):
     building_size = models.IntegerField(default=0)
     completed = models.BooleanField(default=False)
     in_escrow = models.BooleanField(default=False)
+    property_type = models.CharField(max_length=40, default="Owner/User")
     # Additional info
     description = models.CharField(max_length=400)
-    main_image = models.ImageField(upload_to='images')
+    main_image = models.ImageField(upload_to='images/')
     flier = models.FileField(upload_to='fliers')
 
     class Meta:

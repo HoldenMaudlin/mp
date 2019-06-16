@@ -3,6 +3,8 @@ from django.http import HttpResponseRedirect
 from .models import CompletedTransactions
 from sale.models import Sale
 from lease.models import Lease
+import operator
+from django.db.models import Q
 
 def sold(request):
     template = 'completedtransactions/index.html'
@@ -12,7 +14,7 @@ def sold(request):
         transactions.append({'address': sale.address, 'id': sale.id})
     old_sales = CompletedTransactions.objects.filter(transaction="Sold")
     for sale in old_sales:
-        transactions.append({'address': sale.address, 'id': sale.id})
+        transactions.append({'address': sale.address, 'type': sale.property_type, 'id': sale.id})
     context = {
         'title': 'Sold',
         'subtitle': 'Sales',
@@ -28,7 +30,7 @@ def leased(request):
         transactions.append({'address': lease.address, 'id': lease.id})
     old_leases = CompletedTransactions.objects.filter(transaction="Leased")
     for lease in old_leases:
-        transactions.append({'address': lease.address, 'id': lease.id})
+        transactions.append({'address': lease.address, 'type': lease.property_type, 'id': lease.id})
     context = {
         'title': 'Leased',
         'subtitle': 'Leases',

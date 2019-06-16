@@ -33,14 +33,15 @@
     <!-- container -->
     <div class="container">
         <!-- title -->
-        <h2 style="margin: 0px">{{title}} Properties</h2>
+        <h2 class="header">{{title}} Properties</h2>
         <h4 style="margin: 0px; color: grey">Showing {{transactions|length}} {{subtitle}}</h4 >
         <hr>
+        
         <!-- ./title -->
         <div class="row">
         {% for prop in transactions %}
-            <div class="col-sm">
-                {{prop.address}}
+            <div style="margin-bottom: 10px;" class="col-sm">
+                <div class="property-list-row"> {{prop.address}} </div>
             </div>
             {% if forloop.counter|divisibleby:2%}
             </div>

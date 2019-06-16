@@ -13,3 +13,29 @@ body {
   /*Without this, clicking will make it sticky*/
   pointer-events: none;
 }
+
+.header {
+  margin-top: 15px !important;
+}
+
+.property-list-row {
+  border-radius: 5px;
+  font-size: 1.3em;
+}
+
+.property-list-row:hover {
+  background-color: grey;
+  transition: .4s;
+
+}
+
+.parent {
+  width: 800px;
+  text-align: center;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}

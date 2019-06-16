@@ -32,7 +32,7 @@
 <body>
   <!--Navigation bar-->
   <div id="nav-placeholder">
-    {% include "home/nav.html" with active_tab='Home' %}
+      {% include "home/nav.html" with active_tab="Home" %}
   </div>
   <!--end of Navigation bar-->
 
@@ -41,8 +41,8 @@
     <div class="container h-100">
       <div class="row h-100 align-items-center">
         <div class="col-lg-12">
-          <h1 class="display-4 text-white mt-5 mb-2">Maud Properties</h1>
-          <p class="lead mb-5 text-white-50">Expert in the sale, lease, and management of property in the Culver City and West Los Angeles area.</p>
+          <h1 class="display-4 text-white mt-5 mb-2">Happy Father's Day</h1>
+          <p class="lead mb-5 text-white-50">And Merry Christmas</p>
         </div>
       </div>
     </div>
@@ -58,27 +58,27 @@
         {% for prop in featured_properties %}
         <div class="col-md-4 mb-5">
           <div class="card h-100">
-          <a href="{{prop.id}}"><img class="card-img-top" src="http://placehold.it/300x200" alt=""></a>
+          <a href="sale/{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
           <div class="card-body">
             <h4 class="card-title">{{prop.address}}</h4>
             <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
             <span class="card-text">Listing Price:</span> 
-            <span class="card-text" style="float: right">${{prop.price|intcomma}} {% if not sale %}/month/{{prop.lease_type}}{% endif %}</span> 
+            <span class="card-text" style="float: right">${{prop.price|intcomma}}{{prop.priceAddOn}}</span> 
             <br>
             <span class="card-text">Building Size:</span> 
-            <span class="card-text" style="float: right">{{prop.building_size|intcomma}}</span> 
+            <span class="card-text" style="float: right">{{prop.building_size|intcomma}} ft.<sup>2</sup></span> 
             <br>
             <span class="card-text">Lot Size:</span>                        
-            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}}</span> 
+            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
           </div>
           <div class="card-footer">
-            <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+            <a href="sale/{{prop.id}}" class="btn btn-primary">Learn More</a>
           </div>
           </div>
-        </div>
-      {% if forloop.counter|divisibleby:3 %}
-      </div>
-      <div class="row">
+          </div>
+        {% if forloop.counter|divisibleby:3 %}
+          </div>
+          <div class="row">
         {% endif %}
         {% endfor %}
       </div>
@@ -88,12 +88,22 @@
       <div class="col-md-8 mb-5">
         <h2>Story</h2>
         <hr>
-        <p>Scott Maudlin, the founder and president of Maud Properties, began his real estate career in 1986. He has been involved in 300+ commercial and industrial sales and 390+ leases. His extensive knowledge of the real estate market, combined with over three decades of experience, consistently provides his clients with exceptional service.</p>
-        <p>Please contact Maud Properties for any assistance with your commercial and industrial real estate needs.</p>
+        <div style="display: flex; flex-direction: row">
+          <div style="padding-right: 20px;">
+            <p align="justify">Scott Maudlin, the founder and president of Maud Properties, began his real estate career in 1986. He has been involved in 300+ commercial and industrial sales and 390+ leases. His extensive knowledge of the real estate market, combined with over three decades of experience, consistently provides his clients with exceptional service.</p>
+            <p align="justify">Please contact Maud Properties for any assistance with your commercial and industrial real estate needs.</p>
+          </div>
+          <div class="parent">
+            <img style="border-radius: 1000px;" height="180" width="180" src="{% static "home/scott.jpg" %} ">
+            <span style="font-weight: bold" align="center">Scott Maudlin</span>
+            <br>
+            <span>Founder and President</span>
+          </div>
+        </div>
         <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com">Inquire Now &raquo;</a>
       </div>
       <div class="col-md-4 mb-5">
-        <h2>Contact Us</h2>
+        <h2>Contact</h2>
         <hr>
         <address>
           <strong>Maud Properties</strong>
@@ -110,6 +120,10 @@
           <br>
           <span title="Email">Email: &nbsp;</span>
           <a href="mailto:#">smaudlin@maudproperties.com</a>
+          <br>
+          <span title="Phone">DRE: &nbsp; &nbsp; </span>
+          00935946
+          <br>
         </address>
       </div>
     </div>

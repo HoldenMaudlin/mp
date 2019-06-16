@@ -27,6 +27,7 @@ def sales(request, Sale_id):
         req_sale = Sale.objects.get(pk=Sale_id)
     except Sale.DoesNotExist:
         raise Http404("Sale listing does not exist.")
+    print(req_sale.main_image.url)
     context = {
         'sale': req_sale, 
     }
