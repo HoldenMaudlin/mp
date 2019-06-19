@@ -10,24 +10,24 @@ class Listing(models.Model):
     longitude = models.DecimalField(max_digits=10, decimal_places=7, default=0)
     latitude = models.DecimalField(max_digits=10, decimal_places=7, default=0)
     # Details
-    price = models.IntegerField(default=0)
+    price = models.IntegerField(default=0, blank=True)
     lot_size = models.IntegerField(default=0, blank=True)
-    building_size = models.IntegerField(default=0)
-    completed = models.BooleanField(default=False)
-    in_escrow = models.BooleanField(default=False)
-    property_type = models.CharField(max_length=40, default="Owner/User")
+    building_size = models.IntegerField(default=0, blank=True)
+    completed = models.BooleanField(default=False, blank=True)
+    in_escrow = models.BooleanField(default=False, blank=True)
+    property_type = models.CharField(max_length=40, default="Owner/User", blank=True)
     # Additional info
-    description = models.CharField(max_length=400)
-    main_image = models.ImageField(upload_to='images/')
-    flier = models.FileField(upload_to='fliers')
+    description = models.CharField(max_length=400, blank=True)
+    main_image = models.ImageField(upload_to='images/', blank=True)
+    flier = models.FileField(upload_to='fliers/', blank=True)
 
     class Meta:
         abstract=True
 
 
 class Sale(Listing):
-    in_escrow = models.BooleanField(default=False)
-    featured = models.BooleanField(default=False)
+    in_escrow = models.BooleanField(default=False, blank=True)
+    featured = models.BooleanField(default=False, blank=True)
 
     def priceAddOn(self):
         return ""

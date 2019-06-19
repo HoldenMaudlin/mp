@@ -26,5 +26,6 @@ def leases(request, Lease_id):
         raise Http404("Lease listing does not exist.")
     context = {
         'sale': req_sale,
+        'page': 'Lease'
     }
     return render(request, 'sale/sale.html', context)

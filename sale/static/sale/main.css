@@ -1,0 +1,22 @@
+
+h4 {
+    color: grey;
+}
+
+.detail-head {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .detail-head {
+        text-align: left;
+    }
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}

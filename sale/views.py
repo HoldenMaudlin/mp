@@ -30,5 +30,6 @@ def sales(request, Sale_id):
     print(req_sale.main_image.url)
     context = {
         'sale': req_sale, 
+        'page': 'Sale',
     }
     return render(request, 'sale/sale.html', context)

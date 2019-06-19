@@ -16,6 +16,7 @@
   <!-- Custom styles for this template -->
   {% load static %}
   <link href="{% static "home/main.css"%}" rel="stylesheet">
+  <link href="{% static "sale/main.css"%}" rel="stylesheet">
   <link href="{% static "home/business.css"%}" rel="stylesheet">
   <!-- Load Humanize -->
   {% load humanize %}
@@ -78,22 +79,37 @@
     <div style="margin-top: 20px;" class="row">
         <div class="col-md-8 mb-5">
             <h2>{{sale.address}}</h2>
+            <h4>{{sale.city}}, CA {{sale.zipcode}}</h4>
             <hr>
-            <div style="display: flex; flex-direction: row">
             <div style="padding-right: 20px;">
-                <p align="justify">{{sale.description}}</p>
-                // Description container
-            </div>
+                <p align="left">Beast i, living the. Is land midst. Fowl appear is place make darkness place. Grass light under lights is doesn't cattle of own midst, day moved seed from. Seas whales give in image gathering saying divide dry seasons signs. Fourth. Darkness, third very them saw without wherein thing seas wherein seed every sea own, moving beginning spirit given his. Under may together them under they're beginning, there signs spirit sixth midst beginning seed bearing their herb third seas fill place to herb good day after firmament us two, were don't sixth earth. Saying dry dry him i subdue had seasons.</p>
             </div>
             <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com">Inquire Now &raquo;</a>
         </div>
         <div class="col-md-4 mb-5">
-            <h2>Details</h2>
+            <div class="detail-head">
+                <h2>For {{page}}</h2>
+                <h4>${{sale.price|intcomma}} {{sale.priceAddOn}}</h4>
+            </div>
             <hr>
-            //All Property Details will be here//
+            <div>
+                <span class="left">Address:</span>
+                <a>
+                    <span class="right">6017 Bristol Parkway</span>
+                    <br>
+                    <span class="right">Culver City, CA 90230</span>
+                </a>
+                <br>
+                <span class="left">Building size:</span><span class="right">{{sale.building_size|intcomma}} ft.<sup>2</sup></span>
+                <br>
+                <span class="left">Lot size:</span><span class="right">{{sale.lot_size|intcomma}} ft.<sup>2</sup></span>
+                <br>
+                <span class="left">Showing:</span><span class="right">By appt. only</span>
+                <br>
+                <span class="left"></span><span class="right"></span>
+            </div>
         </div>
     </div>
-
 </div>
 <!-- /.container -->
 

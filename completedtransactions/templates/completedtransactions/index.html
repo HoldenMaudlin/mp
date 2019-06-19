@@ -40,8 +40,10 @@
         <!-- ./title -->
         <div class="row">
         {% for prop in transactions %}
-            <div style="margin-bottom: 10px;" class="col-sm">
-                <div class="property-list-row"> {{prop.address}} </div>
+            <div style="padding: 5px;" class="col-sm">
+                <div class="property-list-row"> 
+                    <span>{{prop.address}}</span><span style="float: right;">{{prop.type}}</span>
+                </div>
             </div>
             {% if forloop.counter|divisibleby:2%}
             </div>
