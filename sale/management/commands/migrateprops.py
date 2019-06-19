@@ -9,11 +9,36 @@ class Command(BaseCommand):
             print("there were zero")
             data = csv.DictReader(open('./data/CurrentListings.csv', encoding='utf-8-sig'))
             for row in data:
-                print(row)
-                CompletedTransactions.objects.create(
-                    longitude=row['LONGITUDE'],
-                    latitude=row['LATITUDE'],
-                    transaction=row['TRANSACTION'],
-                    address=row['ADDRESS'],
-                    transaction_type=row['TYPE']
-                )
+                if row['SALE'] == '1':
+                    Sale.objects.create(
+                        longitude=row['LONGITUDE'],
+                        latitude=row['LATITUDE'],
+                        address=row['ADDRESS'],
+                        city=row['CITY'],
+                        zipcode=row['ZIPCODE'],
+                        completed=row['TRANSACTION'],
+                        price=row['PRICE'],
+                        description=row['DESCRIPTION'],
+                        featured=False,
+                        lot_size=row['LOT_SIZE'],
+                        building_size=row['BUILDING_SIZE'],
+                        property_type=row['TYPE'],
+                        in_escrow=False
+                    )
+                else:
+                    Lease.objects.create(
+                        longitude=row['LONGITUDE'],
+                        latitude=row['LATITUDE'],
+                        address=row['ADDRESS'],
+                        city=row['CITY'],
+                        zipcode=row['ZIPCODE'],
+                        completed=row['TRANSACTION'],
+                        price=row['PRICE'],
+                        description=row['DESCRIPTION'],
+                        lot_size=row['LOT_SIZE'],
+                        building_size=row['BUILDING_SIZE'],
+                        property_type=row['TYPE'],
+                        in_escrow=False
+                    )
+            self.stdout.write(self.style.SUCCESS('Successfully migrated props'))
+
