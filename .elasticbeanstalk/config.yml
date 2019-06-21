@@ -2,6 +2,8 @@ branch-defaults:
   backend:
     environment: MaudPropWeb-dev
     group_suffix: null
+  style:
+    environment: MaudPropWeb-dev
 global:
   application_name: MaudPropWeb
   branch: null
