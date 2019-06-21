@@ -9,3 +9,11 @@ class Lease(Listing):
 
     def priceAddOn(self):
         return " p. month/" + self.lease_type
+
+class LeaseImage(models.Model):
+    property = models.ForeignKey(Lease, on_delete=models.PROTECT, related_name='images')
+    image = models.ImageField()
+    imagedescription = models.CharField(max_length=100, blank=True)
+
+    def __str__(self):
+        return self.property.address

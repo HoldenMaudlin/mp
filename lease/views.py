@@ -21,6 +21,10 @@ def index(request):
 
 
 def leases(request, Lease_id):
+    if 'GOOGLE_API_KEY' in os.environ:
+        GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
+    else:
+        GOOGLE_API_KEY = config('GOOGLE_API_KEY')
     try:
         req_sale = Lease.objects.get(pk=Lease_id)
     except Lease.DoesNotExist:
@@ -29,5 +33,10 @@ def leases(request, Lease_id):
         'sale': req_sale,
         'page': 'Lease',
         'complete': 'Leased',
+        'GOOGLE_API_KEY': GOOGLE_API_KEY,
+        'images': getLeasePictures(Lease_id)
     }
     return render(request, 'sale/sale.html', context)
+
+def getLeasePictures(prop_id):
+    return Lease.objects.get(pk=prop_id).images.all()

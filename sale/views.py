@@ -34,24 +34,14 @@ def sales(request, Sale_id):
         req_sale = Sale.objects.get(pk=Sale_id)
     except Sale.DoesNotExist:
         raise Http404("Sale listing does not exist.")
-    images = getSalePictures(Sale_id)
     context = {
         'sale': req_sale, 
         'page': 'Sale',
         'complete': 'Sold',
         'GOOGLE_API_KEY': GOOGLE_API_KEY,
-        'images': images,
+        'images': getSalePictures(Sale_id),
     }
     return render(request, 'sale/sale.html', context)
 
 def getSalePictures(prop_id):
-    pictures = []
-    prop = Sale.objects.get(pk=prop_id)
-    print(prop)
-    images = prop.images.all()
-    for pic in images:
-        pictures.append({
-            'image': pic.image,
-            'desc': pic.imagedescription,
-        })
-    return images
+    return Sale.objects.get(pk=prop_id).images.all()
