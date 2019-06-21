@@ -24,7 +24,7 @@ class Listing(models.Model):
     flier = models.FileField(upload_to='fliers/', blank=True)
     rank = models.IntegerField(default=1)
 
-    def footage():
+    def footage(self):
         return "sq. ft."
 
     def __str__(self):
