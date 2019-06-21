@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-from decouple import config
+if 'AWS_SECRET_ACCESS_KEY' not in os.environ:
+    from decouple import config
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -143,6 +144,8 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'mediafiles')
 
 # AWS Config
+print(os.environ.get('AWS_ACCESS_KEY_ID'))
+print(os.environ.get('AWS_SECRET_ACCESS_KEY'))
 if 'AWS_ACCESS_KEY_ID' in os.environ:
     AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
     AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
