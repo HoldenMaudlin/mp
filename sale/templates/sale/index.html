@@ -48,8 +48,10 @@
                         <span class="card-text">Building Size:</span> 
                         <span class="card-text" style="float: right">{{prop.building_size|intcomma}} ft.<sup>2</sup></span> 
                         <br>
-                        <span class="card-text">Lot Size:</span>                        
-                        <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
+                        {% if prop.lot_size != 0 %}
+                            <span class="card-text">Lot Size:</span>                        
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
+                        {% endif %}
                     </div>
                     <div class="card-footer">
                         <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
@@ -73,15 +75,20 @@
                 {% for prop in escrow_properties %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                    <a href="{{prop.id}}"><img class="card-img-top" src="http://placehold.it/300x200" alt=""></a>
+                    <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
-                        <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}}</span> 
+                        <span class="card-text">Listing Price:</span> 
+                        <span class="card-text" style="float: right">In Escrow</span> 
                         <br>
-                        <span class="card-text">Lot Size:</span>                        
-                        <span class="card-text" style="float: right">{{prop.lot_size|intcomma}}</span> 
+                        <span class="card-text">Building Size:</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} ft.<sup>2</sup></span> 
+                        <br>
+                        {% if prop.lot_size != 0 %}
+                            <span class="card-text">Lot Size:</span>                        
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
+                        {% endif %}
                     </div>
                     <div class="card-footer">
                         <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
@@ -109,15 +116,20 @@
                 {% for prop in recent_properties %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                    <a href="{{prop.id}}"><img class="card-img-top" src="http://placehold.it/300x200" alt=""></a>
+                    <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
-                        <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}}</span> 
+                        <span class="card-text">Listing Price:</span> 
+                        <span class="card-text" style="float: right"><b>{{complete}}</b></span> 
                         <br>
-                        <span class="card-text">Lot Size:</span>                        
-                        <span class="card-text" style="float: right">{{prop.lot_size|intcomma}}</span> 
+                        <span class="card-text">Building Size:</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} ft.<sup>2</sup></span> 
+                        <br>
+                        {% if not prop.lot_size == 0 %}
+                            <span class="card-text">Lot Size:</span>                        
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
+                        {% endif %}
                     </div>
                     <div class="card-footer">
                         <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>

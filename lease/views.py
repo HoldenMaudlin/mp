@@ -15,6 +15,7 @@ def index(request):
         'page': 'Lease',
         'current_properties': all_curr_leases,
         'recent_properties': recent_leases,
+        'complete': 'Leased',
     }
     return render(request, 'sale/index.html', context)
 
@@ -26,6 +27,7 @@ def leases(request, Lease_id):
         raise Http404("Lease listing does not exist.")
     context = {
         'sale': req_sale,
-        'page': 'Lease'
+        'page': 'Lease',
+        'complete': 'Leased',
     }
     return render(request, 'sale/sale.html', context)

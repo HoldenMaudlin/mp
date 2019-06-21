@@ -82,14 +82,19 @@
             <h4>{{sale.city}}, CA {{sale.zipcode}}</h4>
             <hr>
             <div style="padding-right: 20px;">
-                <p align="left">Beast i, living the. Is land midst. Fowl appear is place make darkness place. Grass light under lights is doesn't cattle of own midst, day moved seed from. Seas whales give in image gathering saying divide dry seasons signs. Fourth. Darkness, third very them saw without wherein thing seas wherein seed every sea own, moving beginning spirit given his. Under may together them under they're beginning, there signs spirit sixth midst beginning seed bearing their herb third seas fill place to herb good day after firmament us two, were don't sixth earth. Saying dry dry him i subdue had seasons.</p>
+                <p align="left">{{sale.description}}</p>
             </div>
             <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com">Inquire Now &raquo;</a>
         </div>
         <div class="col-md-4 mb-5">
             <div class="detail-head">
-                <h2>For {{page}}</h2>
-                <h4>${{sale.price|intcomma}} {{sale.priceAddOn}}</h4>
+                {% if not sale.completed %}
+                    <h2>For {{page}}</h2>
+                    <h4>${{sale.price|intcomma}}{{sale.priceAddOn}}</h4>
+                {% else %}
+                    <h2>{{complete}}</h4>
+                    <h4>May 25th, 2019</h4>
+                {% endif %}
             </div>
             <hr>
             <div>
@@ -114,12 +119,9 @@
 <!-- /.container -->
 
 <!-- Footer -->
-<footer class="py-5 bg-dark">
-    <div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+    <div id="nav-placeholder">
+        {% include "home/foot.html" %}
     </div>
-    <!-- /.container -->
-</footer>
   <!-- Bootstrap core JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>

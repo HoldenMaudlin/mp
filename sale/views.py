@@ -17,6 +17,7 @@ def index(request):
         'current_properties': all_curr_sales,
         'escrow_properties': all_in_escrows,
         'recent_properties': recent_sales,
+        'complete': 'Sold',
     }
     return render(request, 'sale/index.html', context)
 
@@ -31,5 +32,6 @@ def sales(request, Sale_id):
     context = {
         'sale': req_sale, 
         'page': 'Sale',
+        'complete': 'Sold',
     }
     return render(request, 'sale/sale.html', context)

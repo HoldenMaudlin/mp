@@ -23,7 +23,8 @@ class Command(BaseCommand):
                         lot_size=row['LOT_SIZE'],
                         building_size=row['BUILDING_SIZE'],
                         property_type=row['TYPE'],
-                        in_escrow=False
+                        in_escrow=False,
+                        main_image='soon.jpg'
                     )
                 else:
                     Lease.objects.create(
@@ -38,7 +39,9 @@ class Command(BaseCommand):
                         lot_size=row['LOT_SIZE'],
                         building_size=row['BUILDING_SIZE'],
                         property_type=row['TYPE'],
-                        in_escrow=False
+                        in_escrow=False,
+                        main_image='soon.jpg',
+                        lease_type='NNN'
                     )
             self.stdout.write(self.style.SUCCESS('Successfully migrated props'))
 
