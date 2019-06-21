@@ -41,16 +41,16 @@
                     <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
-                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
+                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
                         <span class="card-text">Listing Price:</span> 
                         <span class="card-text" style="float: right">${{prop.price|intcomma}}{{prop.priceAddOn}}</span> 
                         <br>
                         <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{sale.footage}}</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</span> 
                         <br>
                         {% if prop.lot_size != 0 %}
                             <span class="card-text">Lot Size:</span>                        
-                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{sale.footage}}</span> 
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
                         {% endif %}
                     </div>
                     <div class="card-footer">
@@ -78,16 +78,16 @@
                     <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
-                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
+                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
                         <span class="card-text">Listing Price:</span> 
                         <span class="card-text" style="float: right">In Escrow</span> 
                         <br>
                         <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{sale.footage}}</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</span> 
                         <br>
                         {% if prop.lot_size != 0 %}
                             <span class="card-text">Lot Size:</span>                        
-                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{sale.footage}}</span> 
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
                         {% endif %}
                     </div>
                     <div class="card-footer">
@@ -119,15 +119,15 @@
                     <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
-                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, {{prop.zipcode}}</h6>
+                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
                         <span class="card-text" style="float: right"><b>{{complete}}</b></span> 
                         <br>
                         <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{sale.footage}}</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</span> 
                         <br>
                         {% if not prop.lot_size == 0 %}
                             <span class="card-text">Lot Size:</span>                        
-                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{sale.footage}}</span> 
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
                         {% endif %}
                     </div>
                     <div class="card-footer">

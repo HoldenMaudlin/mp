@@ -21,6 +21,7 @@ class Listing(models.Model):
     # Additional info
     description = models.CharField(max_length=400, blank=True)
     main_image = models.ImageField(upload_to='images/', blank=True)
+    main_image_description = models.CharField(max_length=100, blank=True)
     flier = models.FileField(upload_to='fliers/', blank=True)
     rank = models.IntegerField(default=1)
 
@@ -44,6 +45,7 @@ class Sale(Listing):
 class SaleImage(models.Model):
     property = models.ForeignKey(Sale, on_delete=models.PROTECT, related_name='images')
     image = models.ImageField()
+    imagedescription = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.property.address
