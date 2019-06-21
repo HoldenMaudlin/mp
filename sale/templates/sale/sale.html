@@ -75,7 +75,6 @@
 
 <!-- Page Content -->
 <div class="container">
-
     <div style="margin-top: 20px;" class="row">
         <div class="col-md-8 mb-5">
             <h2>{{sale.address}}</h2>
@@ -84,7 +83,7 @@
             <div style="padding-right: 20px;">
                 <p align="left">{{sale.description}}</p>
             </div>
-            <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com">Inquire Now &raquo;</a>
+            <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com?Subject=Inquiry%20Regarding%20{{sale.address}}">Inquire Now &raquo;</a>
         </div>
         <div class="col-md-4 mb-5">
             <div class="detail-head">
@@ -100,14 +99,14 @@
             <div>
                 <span class="left">Address:</span>
                 <a>
-                    <span class="right">6017 Bristol Parkway</span>
+                    <span class="right">{{sale.address}}</span>
                     <br>
-                    <span class="right">Culver City, CA 90230</span>
+                    <span class="right">{{sale.city}}, CA {{sale.zipcode}}</span>
                 </a>
                 <br>
-                <span class="left">Building size:</span><span class="right">{{sale.building_size|intcomma}} ft.<sup>2</sup></span>
+                <span class="left">Building size:</span><span class="right">{{sale.building_size|intcomma}} {{sale.footage}}</span>
                 <br>
-                <span class="left">Lot size:</span><span class="right">{{sale.lot_size|intcomma}} ft.<sup>2</sup></span>
+                <span class="left">Lot size:</span><span class="right">{{sale.lot_size|intcomma}} {{sale.footage}}</span>
                 <br>
                 <span class="left">Showing:</span><span class="right">By appt. only</span>
                 <br>
@@ -115,6 +114,14 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-8 mb-5">
+            <h2>Property Location</h2>
+            <hr>
+            <div style="width: 720px; height: 540px;" id="map"></div>
+        </div>
+    </div> 
+
 </div>
 <!-- /.container -->
 
@@ -125,6 +132,31 @@
   <!-- Bootstrap core JavaScript -->
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript">
+        var map;      
+        const title = toString("{{ sale.address }}")      
+        const lng = parseFloat("{{ sale.longitude }}")
+        const lat = parseFloat("{{ sale.latitude }}")
+        const latlng = {lat: lat, lng: lng}
+        var infowindow = new google.maps.InfoWindow();
+        function initMap() {       
+            map = new google.maps.Map(document.getElementById('map'), {
+            center: latlng,
+            zoom: 14
+            });
+            var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                title: title
+            })
+            google.maps.event.addListener(marker, 'click', function(){
+                infowindow.setContent(this.title);
+                infowindow.open(map,this);
+            })
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBR53Iuri5nQc3SJxJKJbUHobVVmDFoB3E&callback=initMap"
+    async defer></script>
 
 </body>
 

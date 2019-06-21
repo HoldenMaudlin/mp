@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.exceptions import ValidationError
+from datetime import date
 # Create your models here.
 
 class Listing(models.Model):
@@ -16,10 +17,18 @@ class Listing(models.Model):
     completed = models.BooleanField(default=False, blank=True)
     in_escrow = models.BooleanField(default=False, blank=True)
     property_type = models.CharField(max_length=40, default="Owner/User", blank=True)
+    completion_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, default=date.today())
     # Additional info
     description = models.CharField(max_length=400, blank=True)
     main_image = models.ImageField(upload_to='images/', blank=True)
     flier = models.FileField(upload_to='fliers/', blank=True)
+    rank = models.IntegerField(default=1)
+
+    def footage():
+        return "sq. ft."
+
+    def __str__(self):
+        return self.address
 
     class Meta:
         abstract=True
@@ -35,3 +44,6 @@ class Sale(Listing):
 class SaleImage(models.Model):
     property = models.ForeignKey(Sale, on_delete=models.PROTECT, related_name='images')
     image = models.ImageField()
+
+    def __str__(self):
+        return self.property.address

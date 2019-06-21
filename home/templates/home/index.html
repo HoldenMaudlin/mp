@@ -66,11 +66,11 @@
               <span class="card-text" style="float: right">${{prop.price|intcomma}}{{prop.priceAddOn}}</span> 
               <br>
               <span class="card-text">Building Size:</span> 
-              <span class="card-text" style="float: right">{{prop.building_size|intcomma}} ft.<sup>2</sup></span> 
+              <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</sup></span> 
               <br>
               {% if prop.lot_size != 0 %}
                 <span class="card-text">Lot Size:</span>                        
-                <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} ft.<sup>2</sup></span> 
+                <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
               {% endif %}
             </div>
             <div class="card-footer">
