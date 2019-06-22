@@ -5,6 +5,8 @@ from .models import Sale, SaleImage
 from django.db.models import Q
 import os
 from decouple import config
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 # Create your views here.
  
@@ -40,6 +42,8 @@ def sales(request, Sale_id):
         'complete': 'Sold',
         'GOOGLE_API_KEY': GOOGLE_API_KEY,
         'images': getSalePictures(Sale_id),
+        'lat': req_sale.latitude,
+        'lng': req_sale.longitude,
     }
     return render(request, 'sale/sale.html', context)
 

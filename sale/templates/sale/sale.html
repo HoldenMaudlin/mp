@@ -84,8 +84,8 @@
                     <h2>For {{page}}</h2>
                     <h4>${{sale.price|intcomma}}{{sale.priceAddOn}}</h4>
                 {% else %}
-                    <h2>{{complete}}</h4>
                     <h4>&nbsp;</h4>
+                    <h2>{{complete}}</h4>
                 {% endif %}
             </div>
             <hr>
@@ -109,7 +109,7 @@
         <div class="col-md-8 mb-5">
             <h2>Property Location</h2>
             <hr>
-            <div style="width: 720px; height: 540px;" id="map"></div>
+            <div style="width: 100%; height: 540px;" id="map"></div>
         </div>
     </div> 
 
@@ -120,30 +120,20 @@
     <div id="nav-placeholder">
         {% include "home/foot.html" %}
     </div>
-  <!-- Bootstrap core JavaScript -->
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-  <script type="text/javascript">
-        var map;      
-        const title = toString("{{ sale.address }}")      
-        const lng = parseFloat("{{ sale.longitude }}")
-        const lat = parseFloat("{{ sale.latitude }}")
-        const latlng = {lat: lat, lng: lng}
-        var infowindow = new google.maps.InfoWindow();
-        function initMap() {       
-            map = new google.maps.Map(document.getElementById('map'), {
-            center: latlng,
-            zoom: 14
-            });
-            var marker = new google.maps.Marker({
-                position: latlng,
-                map: map,
-                title: title
-            })
-            google.maps.event.addListener(marker, 'click', function(){
-                infowindow.setContent(this.title);
-                infowindow.open(map,this);
-            })
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Map Scripts -->
+    <script src="{% static "sale/js/single-property-google-map.js"%}" type="text/javascript"> </script>
+    <script type="text/javascript">
+        const latlng = {
+            lat: parseFloat({{lat}}),
+            lng: parseFloat({{lng}})
+        };
+        const title = "{{sale|safe}}";
+        function initMap() {
+            displayProperty(latlng, title);
         }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&callback=initMap"
