@@ -1,5 +1,16 @@
 from django.contrib import admin
-from .models import Lease
+from .models import Lease, LeaseImage
 # Register your models here.
 
-admin.site.register(Lease)
+class LeaseImageAdmin(admin.ModelAdmin):
+    raw_id_fields=("property",)
+    autocomplete_fields=['property']
+    search_fields=['property']
+
+class LeaseAdmin(admin.ModelAdmin):
+    search_fields = []
+    list_display = ['address', 'completed', 'rank']
+    search_fields = ['address']
+
+admin.site.register(Lease, LeaseAdmin)
+admin.site.register(LeaseImage, LeaseImageAdmin)

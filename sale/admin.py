@@ -6,6 +6,7 @@ from .models import SaleImage
 class SaleImageAdmin(admin.ModelAdmin):
     raw_id_fields=("property",)
     autocomplete_fields=['property']
+    search_fields=['property__address']
 
 class SaleAdmin(admin.ModelAdmin):
     search_fields = []

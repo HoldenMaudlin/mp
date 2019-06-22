@@ -2,7 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, Http404
 from django.template import loader
 from .models import Lease
-from django.db.models import Q
+from django.db.models import Q 
+import os
+from decouple import config
 
 # Create your views here.
 

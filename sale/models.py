@@ -17,7 +17,7 @@ class Listing(models.Model):
     completed = models.BooleanField(default=False, blank=True)
     in_escrow = models.BooleanField(default=False, blank=True)
     property_type = models.CharField(max_length=40, default="Owner/User", blank=True)
-    completion_date = models.DateField(auto_now=False, auto_now_add=False, blank=True, default=date.today())
+    completion_date = models.DateField(auto_now=False, auto_now_add=True, blank=True)
     # Additional info
     description = models.CharField(max_length=400, blank=True)
     main_image = models.ImageField(upload_to='images/', blank=True)

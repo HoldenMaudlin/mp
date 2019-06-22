@@ -19,15 +19,14 @@ body {
 }
 
 .property-list-row {
-  border-radius: 5px;
   font-size: 1.3em;
   padding-right: 20px;
+  height: 35px;
 }
 
 .property-list-row:hover {
-  background-color: grey;
-  transition: .4s;
-
+  transition: .3s;
+  background-color: rgba(218, 218, 218, 1);
 }
 
 .parent {
