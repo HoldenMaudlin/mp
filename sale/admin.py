@@ -9,7 +9,6 @@ class SaleImageAdmin(admin.ModelAdmin):
     search_fields=['property__address']
 
 class SaleAdmin(admin.ModelAdmin):
-    search_fields = []
     list_display = ['address', 'completed', 'rank']
     search_fields = ['address']
 

@@ -45,12 +45,13 @@
       <div class="row">
         {% for prop in featured_properties %}
           <div class="col-md-4 mb-5">
+            <h4 class="title">For {{prop.title}}</h4>
             <div class="card h-100">
-            <a href="sale/{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
+            <a href="{{prop.title|lower}}/{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
             <div class="card-body">
               <h4 class="card-title">{{prop.address}}</h4>
               <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
-              <span class="card-text">Listing Price:</span> 
+              <span class="card-text">{{prop.listing_title}}</span> 
               <span class="card-text" style="float: right">${{prop.price|intcomma}}{{prop.priceAddOn}}</span> 
               <br>
               <span class="card-text">Building Size:</span> 
@@ -62,7 +63,7 @@
               {% endif %}
             </div>
             <div class="card-footer">
-              <a href="sale/{{prop.id}}" class="btn btn-primary">Learn More</a>
+              <a href="{{prop.title|lower}}/{{prop.id}}" class="btn btn-primary">Learn More</a>
             </div>
             </div>
           </div>

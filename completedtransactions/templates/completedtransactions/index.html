@@ -36,7 +36,7 @@
         {% for prop in transactions %}
             <div class="col-xl">
                 <div class="property-list-row"> 
-                    <span>{{prop.address}}</span><span style="float: right;">{{prop.type}}</span>
+                    <span>{{prop.address}}</span><span style="float: right;">{{prop.property_type}}</span>
                 </div>
             </div>
             {% if forloop.counter|divisibleby:2%}

@@ -8,13 +8,7 @@ from django.db.models import Q
 
 def sold(request):
     template = 'completedtransactions/index.html'
-    transactions = []
-    sales = Sale.objects.filter(completed=True)
-    for sale in sales:
-        transactions.append({'address': sale.address, 'type': sale.property_type, 'id': sale.id})
-    old_sales = CompletedTransactions.objects.filter(transaction="Sold")
-    for sale in old_sales:
-        transactions.append({'address': sale.address, 'type': sale.property_type, 'id': sale.id})
+    transactions = CompletedTransactions.objects.filter(transaction="Sold").extra(select={'category': 'CAST(category AS INTEGER)'}).order_by('category')
     context = {
         'title': 'Sold',
         'subtitle': 'Sales',
@@ -24,13 +18,8 @@ def sold(request):
 
 def leased(request):
     template = 'completedtransactions/index.html'
-    transactions = []
+    transactions = CompletedTransactions.objects.filter(transaction="Leased").extra(select={'category': 'CAST(category AS INTEGER)'}).order_by('category')
     leases = Lease.objects.filter(completed=True)
-    for lease in leases:
-        transactions.append({'address': lease.address, 'type': lease.property_type, 'id': lease.id})
-    old_leases = CompletedTransactions.objects.filter(transaction="Leased")
-    for lease in old_leases:
-        transactions.append({'address': lease.address, 'type': lease.property_type, 'id': lease.id})
     context = {
         'title': 'Leased',
         'subtitle': 'Leases',

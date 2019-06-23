@@ -1,8 +1,4 @@
 
-h4 {
-    color: grey;
-}
-
 .detail-head {
     text-align: right;
 }
@@ -19,4 +15,35 @@ h4 {
 
 .right {
     float: right;
+}
+
+h4 {
+    color: grey
+  }
+
+.image-desc {
+    font-size: 18pt;
+}
+
+.carousel-inner > .carousel-item > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    max-height: 800px;
+    width: auto;
+  }
+
+img {
+    display: block;
+    max-width: 1066.666px;;
+    max-height:800px;
+    width: auto;
+    height: auto;
+  }
+
+.carousel-inner {
+    background-color: black;
 }

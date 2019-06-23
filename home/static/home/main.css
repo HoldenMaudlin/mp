@@ -41,7 +41,7 @@ img {
 }
 
 h6 {
-  color: grey;
+  color: rgb(99, 99, 99);
 }
 
 .story {
@@ -90,3 +90,8 @@ h6 {
   background: rgba(0, 0, 0, 0.5);
   z-index: 0;
 }
+
+.title {
+  color: rgb(99, 99, 99);
+}
+

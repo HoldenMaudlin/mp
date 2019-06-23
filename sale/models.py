@@ -24,9 +24,13 @@ class Listing(models.Model):
     main_image_description = models.CharField(max_length=100, blank=True)
     flier = models.FileField(upload_to='fliers/', blank=True)
     rank = models.IntegerField(default=1)
+    featured = models.BooleanField(default=False, blank=True)
 
     def footage(self):
         return "sq. ft."
+
+    def listing_title(self):
+        return "Listing Price:"
 
     def __str__(self):
         return self.address
@@ -37,7 +41,6 @@ class Listing(models.Model):
 
 class Sale(Listing):
     in_escrow = models.BooleanField(default=False, blank=True)
-    featured = models.BooleanField(default=False, blank=True)
 
     def priceAddOn(self):
         return ""

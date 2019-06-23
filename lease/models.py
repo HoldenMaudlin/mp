@@ -8,7 +8,10 @@ class Lease(Listing):
     lease_type = models.CharField(max_length=10, choices=[('NNN', 'NNN'), ('MG', 'MG'), ('FSG', 'FSG')], blank=True)
 
     def priceAddOn(self):
-        return " p. month/" + self.lease_type
+        return " per month/" + self.lease_type
+
+    def listing_title(self):
+        return "Rent:"
 
 class LeaseImage(models.Model):
     property = models.ForeignKey(Lease, on_delete=models.PROTECT, related_name='images')

@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
-                        <span class="card-text">Listing Price:</span> 
+                        <span class="card-text">{{prop.listing_title}}</span> 
                         <span class="card-text" style="float: right">${{prop.price|intcomma}}{{prop.priceAddOn}}</span> 
                         <br>
                         <span class="card-text">Building Size:</span> 
@@ -74,7 +74,6 @@
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
-                        <span class="card-text">Listing Price:</span> 
                         <span class="card-text" style="float: right">In Escrow</span> 
                         <br>
                         <span class="card-text">Building Size:</span> 
