@@ -3,20 +3,20 @@ from completedtransactions.models import CompletedTransactions
 import csv
 
 def getCategory(address):
-    bank = {1: 'Venice',
-        2: 'Sepulveda',
-        3: 'Washington',
-        4: 'LaCienega',
-        5: 'Overland',
-        6: 'Robertson',
-        7: 'Jefferson',
-        8: 'W. Adams',
-        9: 'Dunn'
+    bank = {'a': 'Venice',
+        'b': 'Sepulveda',
+        'c': 'Washington',
+        'd': 'LaCienega',
+        'e': 'Overland',
+        'f': 'Robertson',
+        'g': 'Jefferson',
+        'h': 'W. Adams',
+        'i': 'Dunn'
     }
     for key, value in bank.items():
         if value in address:
             return key
-    return 10
+    return 'j'
 
 
 class Command(BaseCommand):

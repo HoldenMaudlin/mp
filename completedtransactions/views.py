@@ -8,7 +8,7 @@ from django.db.models import Q
 
 def sold(request):
     template = 'completedtransactions/index.html'
-    transactions = CompletedTransactions.objects.filter(transaction="Sold").extra(select={'category': 'CAST(category AS INTEGER)'}).order_by('category')
+    transactions = CompletedTransactions.objects.filter(transaction="Sold").order_by('category')
     context = {
         'title': 'Sold',
         'subtitle': 'Sales',
@@ -18,7 +18,7 @@ def sold(request):
 
 def leased(request):
     template = 'completedtransactions/index.html'
-    transactions = CompletedTransactions.objects.filter(transaction="Leased").extra(select={'category': 'CAST(category AS INTEGER)'}).order_by('category')
+    transactions = CompletedTransactions.objects.filter(transaction="Leased").order_by('category')
     leases = Lease.objects.filter(completed=True)
     context = {
         'title': 'Leased',
