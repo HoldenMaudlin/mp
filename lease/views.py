@@ -37,8 +37,8 @@ def leases(request, Lease_id):
         'complete': 'Leased',
         'GOOGLE_API_KEY': GOOGLE_API_KEY,
         'images': getLeasePictures(Lease_id),
-        'lat': req_lease.latitude,
-        'lng': req_lease.longitude,
+        'lat': req_sale.latitude,
+        'lng': req_sale.longitude,
     }
     return render(request, 'sale/sale.html', context)
 
