@@ -11,7 +11,7 @@
     <!-- Custom styles for this template -->
     {% load static %}
     <link href="{% static "home/main.css"%}" rel="stylesheet">
-    
+    <link rel="shortcut icon" type="image/png" href="{% static "home/maudlogo.png"%}"/>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 
 </head>
@@ -22,9 +22,6 @@
         {% include "home/nav.html" with active_tab='Transactions' %}
     </div>
     <!--end of Navigation bar-->
-
-
-
     <!-- container -->
     <div class="container">
         <!-- title -->
