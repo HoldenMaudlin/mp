@@ -4,6 +4,8 @@ branch-defaults:
     group_suffix: null
   endgame:
     environment: MaudPropWeb-dev
+  master:
+    environment: MaudPropWeb-dev
   style:
     environment: MaudPropWeb-dev
 global:

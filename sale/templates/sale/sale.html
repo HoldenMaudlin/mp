@@ -99,8 +99,10 @@
                 <br>
                 <span class="left">Building size:</span><span class="right">{{sale.building_size|intcomma}} {{sale.footage}}</span>
                 <br>
+                {% if not sale.lot_size == 0 %}
                 <span class="left">Lot size:</span><span class="right">{{sale.lot_size|intcomma}} {{sale.footage}}</span>
                 <br>
+                {% endif %}
                 {% if sale.flier %}
                     <span class="left"></span><span class="right"><a href="{{sale.flier.url}}">Flyer</a></span>
                 {% endif %}
