@@ -15,7 +15,7 @@
   <link href="{% static "home/main.css"%}" rel="stylesheet">
   <link href="{% static "sale/main.css"%}" rel="stylesheet">
   <link href="{% static "home/business.css"%}" rel="stylesheet">
-  <link rel="shortcut icon" type="image/png" href="{% static "home/maudlogo.png"%}"/>
+  <link rel="shortcut icon" type="image/png" href="{% static "home/maudlogo.png"%}"
   <!-- Load Humanize -->
   {% load humanize %}
 
@@ -80,7 +80,7 @@
                 <p align="left">{{sale.description}}</p>
             </div>
             <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com?Subject=Inquiry%20Regarding%20{{sale.address}}">Inquire Now &raquo;</a>
-            <a class="btn btn-primary btn-lg" style="margin-left: 5px; background-color: grey; border: 0px;" href="/{{page|lower}}">See More {{page}}s &laquo;</a>
+            <a class="btn btn-secondary btn-lg" style="margin-left: 5px;" href="/{{page|lower}}">See More {{page}}s &laquo;</a>
         </div>
         <div class="col-md-4 mb-5">
             <div class="detail-head">
