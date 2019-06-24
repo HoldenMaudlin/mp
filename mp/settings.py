@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['maudpropweb-dev.us-west-2.elasticbeanstalk.com','127.0.0.1']
 INSTALLED_APPS = [
     'completedtransactions.apps.CompletedTransactionsConfig',
     'home.apps.HomeConfig',
+    'map.apps.MapConfig',
     'lease.apps.LeaseConfig',
     'sale.apps.SaleConfig',
     'django.contrib.admin',

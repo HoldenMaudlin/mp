@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% include "home/head.html" %}
+    <!-- Boot strap core CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    {% load static %}
+    <link href="{% static "home/main.css"%}" rel="stylesheet">
+    <link href="{% static "map/main.css"%}" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static "home/maudlogo.png"%}"/>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+
+<body>
+    <!--Navigation bar-->
+    <div id="nav-placeholder">
+        {% include "home/nav.html" with active_tab='Transactions' %}
+    </div>
+    <!--end of Navigation bar-->
+    <!-- container -->
+    <div class="container">
+        <!-- title -->
+        <h2 class="header">Transactions Map</h2>
+        <hr>
+        <!-- ./title -->
+        <div class="form-check form-check-inline" id="for_sale">
+            <input class="form-check-input active" type="checkbox" checked="true" id="for_sale" value="option1">
+            <label class="form-check-label" id="for_sale" for="inlineCheckbox1">For Sale</label>
+        </div>
+        <div class="form-check form-check-inline" id="for_lease">
+            <input class="form-check-input" type="checkbox" checked="true" id="for_lease" value="option2">
+            <label class="form-check-label" id="for_lease" for="inlineCheckbox2">For Lease</label>
+        </div>
+        <div class="form-check form-check-inline" id="sold">
+            <input class="form-check-input" type="checkbox" checked="true" id="sold" value="option1">
+            <label class="form-check-label" id="sold" for="inlineCheckbox1">Sold</label>
+        </div>
+        <div class="form-check form-check-inline" id="leased">
+            <input class="form-check-input" type="checkbox" checked="true" id="leased" value="option2">
+            <label class="form-check-label" id="leased" for="inlineCheckbox2">Leased</label>
+        </div>
+        <div id="map"></div>
+    </div>
+    <!-- /.container -->
+
+
+
+    <div id="footer">
+        {% include "home/foot.html" %}
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+     <!-- Google Map Scripts -->
+    <script src="{% static "map/js/all-properties-google-map.js"%}" type="text/javascript"> </script>
+    <script type="text/javascript">
+        function initMap() {
+            const props = JSON.parse("{{props|escapejs}}")
+            displayProperties(props);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API_KEY}}&callback=initMap"
+    async defer></script>
+
+</body>
+</html>
