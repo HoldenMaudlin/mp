@@ -3,9 +3,27 @@
     text-align: right;
 }
 
+
+
 @media (max-width: 768px) {
     .detail-head {
         text-align: left;
+    }
+
+    
+}
+
+@media (min-width: 380px) {
+    .see-more-button {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 380px) {
+    .see-more-button {
+        margin-top: 10px;
+        margin-right: 0px;
+        margin-left: 0px; 
     }
 }
 
