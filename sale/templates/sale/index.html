@@ -34,7 +34,7 @@
                 {% for prop in current_properties %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                    <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
+                    <a href="{{prop.getUrl}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
@@ -50,7 +50,7 @@
                         {% endif %}
                     </div>
                     <div class="card-footer">
-                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                        <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
                     </div>
                     </div>
                 </div>
@@ -71,7 +71,7 @@
                 {% for prop in escrow_properties %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                    <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
+                    <a href="{{prop.getUrl}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
@@ -86,7 +86,7 @@
                         {% endif %}
                     </div>
                     <div class="card-footer">
-                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                        <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
                     </div>
                     </div>
                 </div>
@@ -111,7 +111,7 @@
                 {% for prop in recent_properties %}
                 <div class="col-md-4 mb-5">
                     <div class="card h-100">
-                    <a href="{{prop.id}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
+                    <a href="{{prop.getUrl}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
                     <div class="card-body">
                         <h4 class="card-title">{{prop.address}}</h4>
                         <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
@@ -126,7 +126,7 @@
                         {% endif %}
                     </div>
                     <div class="card-footer">
-                        <a href="{{prop.id}}" class="btn btn-primary">Learn More</a>
+                        <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
                     </div>
                     </div>
                 </div>

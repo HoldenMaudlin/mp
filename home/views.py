@@ -20,6 +20,7 @@ def getProps():
             'footage': sale.footage,
             'lot_size': sale.lot_size,
             'listing_title': sale.listing_title,
+            'getUrl': sale.getUrl,
     })
     leases = Lease.objects.filter(featured=True)
     for sale in leases:
@@ -36,13 +37,13 @@ def getProps():
             'footage': sale.footage,
             'lot_size': sale.lot_size,
             'listing_title': sale.listing_title,
+            'getUrl': sale.getUrl
     })
     return props
 
 def index(request):
     template = 'home/index.html'
     props = getProps()
-    print(props)
     title = 'Featured Property' if len(props) < 2 else 'Featured Properties'
     context = {
         'featured_properties': props,

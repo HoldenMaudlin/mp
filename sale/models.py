@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from datetime import date
+import re
 # Create your models here.
 
 class Listing(models.Model):
@@ -32,8 +33,17 @@ class Listing(models.Model):
     def listing_title(self):
         return "Listing Price:"
 
+    def slug(self):
+        trim = str(self.address.replace(' ', '-'))
+        slug = re.sub(r'[^a-zA-Z\d\s-]+', '', trim)
+        return slug
+
+    def getUrl(self):
+        url = self.slug() + "," + str(self.pk)
+        return url
+
     def __str__(self):
-        return self.address
+        return str(self.address)
 
     class Meta:
         abstract=True

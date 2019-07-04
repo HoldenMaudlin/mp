@@ -22,7 +22,7 @@ def index(request):
     return render(request, 'sale/index.html', context)
 
 
-def leases(request, Lease_id):
+def leases(request, slug, Lease_id):
     if 'GOOGLE_API_KEY' in os.environ:
         GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
     else:

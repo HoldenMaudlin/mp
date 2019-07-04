@@ -27,7 +27,7 @@ def index(request):
 
 
 
-def sales(request, Sale_id):
+def sales(request, slug, Sale_id):
     if 'GOOGLE_API_KEY' in os.environ:
         GOOGLE_API_KEY = os.environ['GOOGLE_API_KEY']
     else:

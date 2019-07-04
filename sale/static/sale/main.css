@@ -14,12 +14,15 @@
 }
 
 @media (min-width: 380px) {
-    .see-more-button {
-        margin-left: 5px;
+    .inquire-button {
+        margin-right: 5px;
     }
 }
 
 @media (max-width: 380px) {
+    .inquire-button {
+        margin-right: 10px;
+    }
     .see-more-button {
         margin-top: 10px;
         margin-right: 0px;

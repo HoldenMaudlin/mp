@@ -25,7 +25,7 @@
 
 <!--Navigation bar-->
 <div id="nav-placeholder">
-    {% include "home/nav.html" %}
+    {% include "home/nav.html"  with active_tab=page %}
 </div>
 
 <header>
@@ -79,7 +79,7 @@
             <div style="padding-right: 20px;">
                 <p align="left">{{sale.description}}</p>
             </div>
-            <a class="btn btn-primary btn-lg" href="mailto:smaudlin@maudproperties.com?Subject=Inquiry%20Regarding%20{{sale.address}}">Inquire Now &raquo;</a>
+            <a class="btn btn-primary btn-lg inquire-button" href="mailto:smaudlin@maudproperties.com?Subject=Inquiry%20Regarding%20{{sale.address}}">Inquire Now &raquo;</a>
             <a class="btn btn-secondary btn-lg see-more-button" href="/{{page|lower}}">See More {{page}}s &laquo;</a>
         </div>
         <div class="col-md-4 mb-5">
