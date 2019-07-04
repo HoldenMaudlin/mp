@@ -4,11 +4,6 @@ from lease.models import Lease
 from .models import TransactionCount
 from itertools import chain
 
-def round_down(num, divisor):
-    if type(num) is not int:
-        num = int(num)
-    return str(num - (num%divisor))
-
 def getProps():
     props = []
     sales = Sale.objects.filter(featured=True)
@@ -67,8 +62,8 @@ def index(request):
         'featured_properties': props,
         'title': title,
         'counts': getCounts(),
-        'sold': round_down(sold_count, 10),
-        'leased': round_down(leased_count, 10),
+        'sold': sold_count,
+        'leased': leased_count, 10,
     }
     return render(request, template, context)
 
