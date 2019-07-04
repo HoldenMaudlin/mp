@@ -1,7 +1,13 @@
 from django.shortcuts import render
 from sale.models import Sale
 from lease.models import Lease
+from .models import TransactionCount
 from itertools import chain
+
+def round_down(num, divisor):
+    if type(num) is not int:
+        num = int(num)
+    return str(num - (num%divisor))
 
 def getProps():
     props = []
@@ -41,13 +47,28 @@ def getProps():
     })
     return props
 
+def getCounts():
+    count = TransactionCount.objects.all()[0]
+    if not count:
+        sold = '310'
+        leased = '401'
+    else:
+        sold = count.sold
+        leased = count.leased
+    return sold, leased
+
+
 def index(request):
     template = 'home/index.html'
     props = getProps()
+    sold_count, leased_count = getCounts()
     title = 'Featured Property' if len(props) < 2 else 'Featured Properties'
     context = {
         'featured_properties': props,
-        'title': title
+        'title': title,
+        'counts': getCounts(),
+        'sold': round_down(sold_count, 10),
+        'leased': round_down(leased_count, 10),
     }
     return render(request, template, context)
 

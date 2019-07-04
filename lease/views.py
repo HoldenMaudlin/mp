@@ -17,7 +17,7 @@ def index(request):
         'page': 'Lease',
         'current_properties': all_curr_leases,
         'recent_properties': recent_leases,
-        'complete': 'Leased',
+        'complete': 'LEASED',
     }
     return render(request, 'sale/index.html', context)
 
@@ -34,7 +34,7 @@ def leases(request, slug, Lease_id):
     context = {
         'sale': req_sale,
         'page': 'Lease',
-        'complete': 'Leased',
+        'complete': 'LEASED',
         'GOOGLE_API_KEY': GOOGLE_API_KEY,
         'images': getLeasePictures(Lease_id),
         'lat': req_sale.latitude,

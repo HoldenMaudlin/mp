@@ -21,7 +21,7 @@ class Listing(models.Model):
     completion_date = models.DateField(blank=True)
     # Additional info
     description = models.CharField(max_length=400, blank=True)
-    main_image = models.ImageField(upload_to='images/', blank=True)
+    main_image = models.ImageField(upload_to='images/')
     main_image_description = models.CharField(max_length=100, blank=True)
     flier = models.FileField(upload_to='fliers/', blank=True)
     rank = models.IntegerField(default=1)

@@ -21,7 +21,7 @@ def index(request):
         'current_properties': all_curr_sales,
         'escrow_properties': all_in_escrows,
         'recent_properties': recent_sales,
-        'complete': 'Sold',
+        'complete': 'SOLD',
     }
     return render(request, 'sale/index.html', context)
 
@@ -39,7 +39,7 @@ def sales(request, slug, Sale_id):
     context = {
         'sale': req_sale, 
         'page': 'Sale',
-        'complete': 'Sold',
+        'complete': 'SOLD',
         'GOOGLE_API_KEY': GOOGLE_API_KEY,
         'images': getSalePictures(Sale_id),
         'lat': req_sale.latitude,
