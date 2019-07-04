@@ -63,7 +63,7 @@ def index(request):
         'title': title,
         'counts': getCounts(),
         'sold': sold_count,
-        'leased': leased_count, 10,
+        'leased': leased_count,
     }
     return render(request, template, context)
 
