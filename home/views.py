@@ -48,11 +48,11 @@ def getProps():
     return props
 
 def getCounts():
-    count = TransactionCount.objects.all()[0]
-    if not count:
+    if TransactionCount.objects.all().count() < 1:
         sold = '310'
         leased = '401'
     else:
+        count = TransactionCount.objects.all()[0]
         sold = count.sold
         leased = count.leased
     return sold, leased
