@@ -12,7 +12,7 @@ from django.core.serializers.json import DjangoJSONEncoder
  
 
 def index(request):
-    all_curr_sales = Sale.objects.filter(completed=False).filter(in_escrow=False)
+    all_curr_sales = Sale.objects.filter(completed=False).filter(in_escrow=False).order_by('rank')
     all_in_escrows = Sale.objects.filter(in_escrow=True)
     recent_sales = Sale.objects.filter(completed=True).order_by('-completion_date')
     context = {
