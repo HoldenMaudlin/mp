@@ -5,3 +5,4 @@ images/*
 fliers/*
 .env
 *.sqlite3
+db.sqlite3
