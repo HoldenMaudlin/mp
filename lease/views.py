@@ -11,7 +11,7 @@ from decouple import config
 
 def index(request):
     all_curr_leases = Lease.objects.filter(completed=False).order_by('rank')
-    recent_leases = Lease.objects.filter(completed=True).order_by('-id')
+    recent_leases = Lease.objects.filter(completed=True).order_by('-completion_date')
     context = {
         'sale': False,
         'page': 'Lease',
