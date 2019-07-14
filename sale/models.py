@@ -59,6 +59,7 @@ class SaleImage(models.Model):
     property = models.ForeignKey(Sale, on_delete=models.PROTECT, related_name='images')
     image = models.ImageField()
     imagedescription = models.CharField(max_length=100, blank=True)
+    rank = models.IntegerField(default=1)
 
     def __str__(self):
         return self.property.address

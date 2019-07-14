@@ -48,4 +48,4 @@ def sales(request, slug, Sale_id):
     return render(request, 'sale/sale.html', context)
 
 def getSalePictures(prop_id):
-    return Sale.objects.get(pk=prop_id).images.all()
+    return Sale.objects.get(pk=prop_id).images.all().order_by('rank')

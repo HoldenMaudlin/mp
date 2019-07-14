@@ -5,6 +5,7 @@ from .models import Lease, LeaseImage
 class LeaseImageAdmin(admin.ModelAdmin):
     raw_id_fields=("property",)
     autocomplete_fields=['property']
+    list_display = ['property', 'rank']
     search_fields=['property']
 
 class LeaseAdmin(admin.ModelAdmin):

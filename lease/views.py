@@ -43,4 +43,4 @@ def leases(request, slug, Lease_id):
     return render(request, 'sale/sale.html', context)
 
 def getLeasePictures(prop_id):
-    return Lease.objects.get(pk=prop_id).images.all()
+    return Lease.objects.get(pk=prop_id).images.all().order_by('rank')
