@@ -1,0 +1,43 @@
+{% extends 'sale/index.html' %}
+
+{% block content %}
+{% load humanize %}
+    <!-- Recent Listing Block -->
+    {% if sale %}
+    <h2>Sold</h2>
+    {% else %}
+    <h2>Leased</h2>
+    {% endif %}
+    <hr>
+    <div class="infinite-container">
+        <div class="row infinite-item">
+        {% for prop in numbers %}
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <a href="{{prop.getUrl}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">{{prop}}</h4>
+                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
+                        <span class="card-text" style="float: right"><b>{{complete}}</b></span> 
+                        <br>
+                        <span class="card-text">Building Size:</span> 
+                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</span> 
+                        <br>
+                        {% if not prop.lot_size == 0 %}
+                            <span class="card-text">Lot Size:</span>                        
+                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+    {% if numbers.has_next %}
+        <a class="infinite-more-link" href="?page={{ numbers.next_page_number }}"></a>
+    {% endif %}
+    <!-- ./ Recent Listing Block -->
+{% endblock %}

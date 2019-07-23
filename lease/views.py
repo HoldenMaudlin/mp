@@ -4,22 +4,39 @@ from django.template import loader
 from .models import Lease
 from django.db.models import Q 
 import os
+import time
 from decouple import config
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 # Create your views here.
 
 
 def index(request):
-    all_curr_leases = Lease.objects.filter(completed=False).order_by('rank')
+    if (request.is_ajax()):
+        time.sleep(.4)
+    all_curr_leases = Lease.objects.filter(completed=False).filter(in_escrow=False).order_by('rank')
     recent_leases = Lease.objects.filter(completed=True).order_by('-completion_date')
+    page = request.GET.get('page', 1)
+    paginator = Paginator(recent_leases, 9)
+    try:
+        numbers = paginator.page(page)
+    except PageNotAnInteger:
+        numbers = paginator.page(1)
+    except EmptyPage:
+        numbers = paginator.page(paginator.num_pages)
     context = {
         'sale': False,
         'page': 'Lease',
         'current_properties': all_curr_leases,
         'recent_properties': recent_leases,
         'complete': 'LEASED',
+        'numbers': numbers,
     }
-    return render(request, 'sale/index.html', context)
+    return render(request, 'sale/sold.html', context)
+
+
 
 
 def leases(request, slug, Lease_id):
