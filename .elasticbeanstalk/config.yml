@@ -8,6 +8,8 @@ branch-defaults:
     environment: MaudPropWeb-dev
   master:
     environment: MaudPropWeb-dev
+  paginator:
+    environment: MaudPropWeb-dev
   style:
     environment: MaudPropWeb-dev
 global:
