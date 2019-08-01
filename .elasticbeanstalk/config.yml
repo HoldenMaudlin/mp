@@ -9,7 +9,7 @@ branch-defaults:
   master:
     environment: MaudPropWeb-dev
   paginator:
-    environment: MaudPropWeb-dev
+    environment: maudpropweb
   style:
     environment: MaudPropWeb-dev
 global:
