@@ -29,7 +29,16 @@ else:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['maudpropweb-dev.us-west-2.elasticbeanstalk.com', 'maudpropweb.us-west-2.elasticbeanstalk.com','127.0.0.1', 'maudproperties.com', 'localhost']
+ALLOWED_HOSTS = [
+    'maudpropweb-dev.us-west-2.elasticbeanstalk.com', 
+    'maudpropweb.us-west-2.elasticbeanstalk.com',
+    '127.0.0.1', 
+    'maudproperties.com', 
+    'www.maudproperties.com',
+    'localhost',
+    'holdenmaudlin.com',
+    'www.holdenmaudlin.com',
+]
 
 
 # Application definition
