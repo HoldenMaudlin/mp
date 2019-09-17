@@ -30,7 +30,7 @@
     <div class="container">
         <!-- Current Listing Block -->
         {% if current_properties|length > 0 %}
-            <h2 class="header">For Pizza {{page}}</h2>
+            <h2 class="header">For {{page}}</h2>
             <hr>
             <div class="row">
                 {% for prop in current_properties %}
