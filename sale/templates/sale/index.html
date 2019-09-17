@@ -30,7 +30,7 @@
     <div class="container">
         <!-- Current Listing Block -->
         {% if current_properties|length > 0 %}
-            <h2 class="header">For {{page}}</h2>
+            <h2 class="header">For Pizza {{page}}</h2>
             <hr>
             <div class="row">
                 {% for prop in current_properties %}
@@ -64,7 +64,7 @@
             </div>
         {% endif %}
         <!-- ./Current Listing Block -->
-
+        {{ message|safe }}
         <!-- Escrow Block -->
         {% if sale and escrow_properties|length > 0%}
             <h2>In Escrow</h2>
@@ -89,6 +89,7 @@
                     </div>
                     <div class="card-footer">
                         <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
+                    </div>
                     </div>
                 </div>
                 {% if forloop.counter|divisibleby:3 %}
