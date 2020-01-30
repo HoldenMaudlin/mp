@@ -2,11 +2,11 @@ from django.core.management.base import BaseCommand, CommandError
 from sale.models import Sale
 from lease.models import Lease
 import csv
+import datetime
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
         if Sale.objects.count() == 0:
-            print("there were zero")
             data = csv.DictReader(open('./data/CurrentListings.csv', encoding='utf-8-sig'))
             for row in data:
                 if row['SALE'] == '1':
@@ -24,7 +24,8 @@ class Command(BaseCommand):
                         building_size=row['BUILDING_SIZE'],
                         property_type=row['TYPE'],
                         in_escrow=False,
-                        main_image='soon.jpg'
+                        main_image='soon.jpg',
+                        completion_date=datetime.datetime.now()
                     )
                 else:
                     Lease.objects.create(
@@ -41,7 +42,8 @@ class Command(BaseCommand):
                         property_type=row['TYPE'],
                         in_escrow=False,
                         main_image='soon.jpg',
-                        lease_type='NNN'
+                        lease_type='NNN',
+                        completion_date=datetime.datetime.now()
                     )
             self.stdout.write(self.style.SUCCESS('Successfully migrated props'))
 

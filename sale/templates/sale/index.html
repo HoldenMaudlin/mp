@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
     {% include "home/head.html" %}
@@ -13,7 +12,10 @@
     <link href="{% static "home/main.css"%}" rel="stylesheet">
     {% load humanize %}
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="{% static 'sale/js/waypoints.js'%}" type="text/javascript"></script>
+    <script src="{% static 'sale/js/infinite.min.js'%}" type="text/javascript"></script>
     <link rel="shortcut icon" type="image/png" href="{% static "home/maudlogo.png"%}"/>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/css-spinning-spinners/1.1.0/load2.css" />
 
 </head>
 
@@ -62,7 +64,7 @@
             </div>
         {% endif %}
         <!-- ./Current Listing Block -->
-
+        {{ message|safe }}
         <!-- Escrow Block -->
         {% if sale and escrow_properties|length > 0%}
             <h2>In Escrow</h2>
@@ -97,50 +99,17 @@
                 {% endfor %}
             </div>
         {% endif %}
-        <!-- ./Escrow Block -->
 
-        <!-- Recent Listing Block -->
-        {% if recent_properties|length > 0 %}
-            {% if sale %}
-                <h2>Sold</h2>
-            {% else %}
-                <h2>Leased</h2>
-            {% endif %}
-            <hr>
-            <div class="row">
-                {% for prop in recent_properties %}
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                    <a href="{{prop.getUrl}}"><img class="card-img-top" src="{{prop.main_image.url}}" alt=""></a>
-                    <div class="card-body">
-                        <h4 class="card-title">{{prop.address}}</h4>
-                        <h6 class="card-subtitle" style="margin-bottom: 15px;">{{prop.city}}, CA {{prop.zipcode}}</h6>
-                        <span class="card-text" style="float: right"><b>{{complete}}</b></span> 
-                        <br>
-                        <span class="card-text">Building Size:</span> 
-                        <span class="card-text" style="float: right">{{prop.building_size|intcomma}} {{prop.footage}}</span> 
-                        <br>
-                        {% if not prop.lot_size == 0 %}
-                            <span class="card-text">Lot Size:</span>                        
-                            <span class="card-text" style="float: right">{{prop.lot_size|intcomma}} {{prop.footage}}</span> 
-                        {% endif %}
-                    </div>
-                    <div class="card-footer">
-                        <a href="{{prop.getUrl}}" class="btn btn-primary">Learn More</a>
-                    </div>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row">
-                {% endif %}
-                {% endfor %}
-            </div>
-        {% endif %}
-        <!-- ./ Recent Listing Block -->
+        {% block content %}
+        {% endblock %}
+        <!-- ./Escrow Block -->
+    </div>
     </div>
     <!-- /.container -->
 
+    <div class="loading-area">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+    </div>  
     <!-- Footer -->
     <div id="nav-placeholder">
         {% include "home/foot.html" %}
@@ -150,7 +119,16 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            onBeforePageLoad: function () {
+                $('.lds-ring').show();
+            },
+            onAfterPageLoad: function ($items) {
+                $('.lds-ring').hide();
+            }
+        });
+    </script>
 </body>
-
 </html>

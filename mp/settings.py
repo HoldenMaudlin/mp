@@ -22,14 +22,23 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 if 'SECRET_KEY' in os.environ:
-    SECRET_KEY = '2LKJP((lkKJEIWOetr4957H333#@!#%$%kljsdyf128e9_**#lenfLKJEFIH$f4#$#2qpo'
+    SECRET_KEY = os.environ['SECRET_KEY']
 else:
     SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['maudpropweb-dev.us-west-2.elasticbeanstalk.com','127.0.0.1']
+ALLOWED_HOSTS = [
+    'maudpropweb-dev.us-west-2.elasticbeanstalk.com', 
+    'maudpropweb.us-west-2.elasticbeanstalk.com',
+    '127.0.0.1', 
+    'maudproperties.com', 
+    'www.maudproperties.com',
+    'localhost',
+    'holdenmaudlin.com',
+    'www.holdenmaudlin.com',
+]
 
 
 # Application definition
